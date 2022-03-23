@@ -2,14 +2,20 @@
 
 [中文版](https://github.com/thu-coai/EVA)
 
+## :star2:Update
+
+- March 2022: Release the EVA2.0 pre-trained model and [our paper](https://arxiv.org/abs/2203.09313) 
+- Jan 2022: Release the fine-tuning code.
+- Aug 2021: Release the EVA1.0 pre-trained model, the interacting code, and [our paper](https://arxiv.org/abs/2108.01547).
+
 ## 1 Introduction
 
-EVA is the largest open-source Chinese dialogue model with up to 2.8B parameters. The 1.0 version model is pre-trained on [WudaoCorpus-Dialog](https://resource.wudaoai.cn/home), and the 2.0 version is pre-trained on a carefully cleaned version of WudaoCorpus-Dialog which yields better performance than the 1.0 version. [Paper link](https://arxiv.org/abs/2108.01547) of EVA1.0.
+EVA is the largest open-source Chinese dialogue model with up to 2.8B parameters. The 1.0 version model is pre-trained on [WudaoCorpus-Dialog](https://resource.wudaoai.cn/home), and the 2.0 version is pre-trained on a carefully cleaned version of WudaoCorpus-Dialog which yields better performance than the 1.0 version. [Paper link](https://arxiv.org/abs/2108.01547) of EVA1.0. [Paper link](https://arxiv.org/abs/2203.09313) of EVA2.0.
 
 We provide the interactive inference, static inference, and finetuning code of EVA in this repo.
 
 ## 2 Model Download
-EVA1.0 model can be downloaded from [BAAI repository](https://wudaoai.cn/model/detail/EVA), the downloaded directory should look like this:
+EVA1.0 and EVA2.0 model can be downloaded from [BAAI repository](https://wudaoai.cn/model/detail/EVA), the downloaded directory of EVA1.0 should look like this:
 
 ```[bash]
 eva/
@@ -18,7 +24,14 @@ eva/
 ├── latest_checkpointed_iteration.txt
 ```
 
-**Since the BAAI institute is still evaluating the EVA2.0 model checkpoint, it would take some time for its release.**
+The downloaded directory of EVA2.0 should look like this:
+
+```[bash]
+eva2/
+├── 1
+│   └── mp_rank_00_model_states.pt
+├── latest_checkpointed_iteration.txt
+```
 
 ## 3 Run the Code
 
@@ -54,13 +67,13 @@ Since there exist some **bugs** in DeepSpeed, you need to make some little modif
 #### Option 2: Docker
 
 ```[bash]
-docker pull gyxthu17/eva:1.4
+docker pull gyxthu17/eva:1.5
 ```
 
 Since the environment is ready in the docker, you don't need to set any environment variables. You may need to mount this directory to a directory in the docker. For example, to mount to /mnt, run the following code to run the docker image:
 
 ```[bash]
-docker run -ti -v ${PWD}:/mnt gyxthu17/eva:1.4 /bin/bash
+docker run -ti -v ${PWD}:/mnt gyxthu17/eva:1.5 /bin/bash
 ```
 
 ### 3.2 Prepare Data
@@ -152,19 +165,25 @@ The pre-trained models aim to facilitate the research for conversation generatio
 ## 6 TODO
 
 + ~~Open source code for finetuning~~
++ ~~EVA2.0 model download link.~~
++ ~~EVA2.0 technical report.~~
 + Provide model/codes of in hugginface style.
-+ EVA2.0 model download link.
-+ EVA2.0 technical report.
 + Models with small sizes.
 + The code to process pre-training data.
 
 ## 7 Citation
 
-```
+```[]
 @article{coai2021eva,
   title={EVA: An Open-Domain Chinese Dialogue System with Large-Scale Generative Pre-Training},
   author={Zhou, Hao and Ke, Pei and Zhang, Zheng and Gu, Yuxian and Zheng, Yinhe and Zheng, Chujie and Wang, Yida and Wu, Chen Henry and Sun, Hao and Yang, Xiaocong and Wen, Bosi and Zhu, Xiaoyan and Huang, Minlie and Tang, Jie},
   journal={arXiv preprint arXiv:2108.01547},
   year={2021}
+}
+@article{coai2022eva2,
+  title={EVA2.0: Investigating Open-Domain Chinese Dialogue Systems with Large-Scale Pre-Training},
+  author={Yuxian Gu, Jiaxin Wen, Hao Sun, Yi Song, Pei Ke, Chujie Zheng, Zheng Zhang, Jianzhu Yao, Xiaoyan Zhu, Jie Tang, Minlie Huang},
+  journal={arXiv preprint arXiv:2108.01547},
+  year={2022}
 }
 ```

@@ -4,9 +4,10 @@
 
 ## :star2:更新
 
-- 2022.3: 开源EVA2.0模型，发布EVA2.0的[论文](https://arxiv.org/abs/2203.09313)。
-- 2022.1: 开源fine-tune代码。
-- 2021.8: 开源EVA1.0模型及交互代码，发布EVA1.0的[论文](https://arxiv.org/abs/2108.01547)。
+- 2022.5: 开源 EVA2.0-base 与 EVA2.0-large 模型
+- 2022.3: 开源 EVA2.0-xLarge 模型，发布 EVA2.0 的[论文](https://arxiv.org/abs/2203.09313)。
+- 2022.1: 开源 fine-tune 代码。
+- 2021.8: 开源 EVA1.0 模型及交互代码，发布 EVA1.0 的[论文](https://arxiv.org/abs/2108.01547)。
 
 ## 1 项目简介
 
@@ -16,7 +17,7 @@ EVA 是目前最大的开源中文预训练对话模型，拥有28亿参数，�
 
 ## 2 模型下载
 
-EVA1.0 和 EVA2.0 模型可以从[智源下载专区](https://wudaoai.cn/model/detail/EVA)下载，EVA1.0 下载后的目录应该具有如下结构：
+EVA1.0 和 EVA2.0-xLarge 模型可以从[智源下载专区](https://wudaoai.cn/model/detail/EVA)下载，EVA1.0 下载后的目录应该具有如下结构：
 
 ```[bash]
 eva/
@@ -33,6 +34,8 @@ eva2/
 │   └── mp_rank_00_model_states.pt
 ├── latest_checkpointed_iteration.txt
 ```
+
+EVA2.0-base 和 EVA2.0-large 模型可以从[此处](https://drive.google.com/drive/folders/1LoEl-j_BGn2gqGMwkXiWCNGjEYBWKeAP?usp=sharing)下载。
 
 ## 3 运行
 
@@ -94,7 +97,7 @@ docker run -ti -v ${PWD}:/mnt gyxthu17/eva:1.5 /bin/bash
 
 在运行以上脚本之前，需要先将 `WORKING_DIR` 改为此 EVA 目录的路径, 将 `CKPT_PATH` 改为存储预训练 checkpoint 的路径。静态评测和微调还需要将`DATA_PATH`改为3.2中的数据目录，该目录下需要有 `train.txt`， `valid.txt` 和 `test.txt` 三个文件，训练/评测结果存储位置`SAVE_PATH`也可以按照需求修改。其它参数含义可以参考中 `eva_finetune.sh` 的注释。
 
-**注意**：EVA2.0 与 EVA1.0 在模型结构上有一些差别，在更换模型时请注意同时更换模型配置文件。项目中默认提供 EVA1.0 的模型配置文件：`eva1.0_model_config.json`，EVA2.0 的配置文件为 `eva2.0_model_config.json`。更改执行脚本中的 `CONFIG_PATH` 即可。
+**注意**：EVA2.0 与 EVA1.0 在模型结构上有一些差别，在更换模型时请注意同时更换模型配置文件。项目中默认提供 EVA2.0-xLarge 的模型配置文件：`eva2.0_model_config.json`，EVA1.0 的配置文件为 `eva1.0_model_config.json`。更改执行脚本中的 `CONFIG_PATH` 即可。
 
 上述修改修改完成后运行：
 
@@ -167,23 +170,23 @@ Sys >>> 拜～
 + ~~finetune 代码整理与开源~~
 + ~~EVA2.0 模型下载链接~~
 + ~~EVA2.0 技术报告~~
++ ~~开源小规模模型~~
 + huggingface 版本的模型/对应代码
-+ 开源小规模模型
 + 预训练数据处理代码开源
 
 ## 7 引用
 
 ```[]
 @article{coai2021eva,
-  title={EVA: An Open-Domain Chinese Dialogue System with Large-Scale Generative Pre-Training},
+  title={{EVA}: An Open-Domain Chinese Dialogue System with Large-Scale Generative Pre-Training},
   author={Zhou, Hao and Ke, Pei and Zhang, Zheng and Gu, Yuxian and Zheng, Yinhe and Zheng, Chujie and Wang, Yida and Wu, Chen Henry and Sun, Hao and Yang, Xiaocong and Wen, Bosi and Zhu, Xiaoyan and Huang, Minlie and Tang, Jie},
   journal={arXiv preprint arXiv:2108.01547},
   year={2021}
 }
 @article{coai2022eva2,
-  title={EVA2.0: Investigating Open-Domain Chinese Dialogue Systems with Large-Scale Pre-Training},
-  author={Yuxian Gu, Jiaxin Wen, Hao Sun, Yi Song, Pei Ke, Chujie Zheng, Zheng Zhang, Jianzhu Yao, Xiaoyan Zhu, Jie Tang, Minlie Huang},
-  journal={arXiv preprint arXiv:2108.01547},
+  title={{EVA2.0}: Investigating Open-Domain Chinese Dialogue Systems with Large-Scale Pre-Training},
+  author={Gu, Yuxian and Wen, Jiaxin and Sun, Hao and Song, Yi and Ke, Pei and Zheng, Chujie and Zhang, Zheng and Yao, Jianzhu and Zhu, Xiaoyan and Tang, Jie and Huang, Minlie},
+  journal={arXiv preprint arXiv:2203.09313},
   year={2022}
 }
 ```

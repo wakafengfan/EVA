@@ -584,8 +584,8 @@ def generate_beam(model_batch, full_context, model, tokenizer: EVATokenizer, arg
     # retrieve best hypotheses
     for i, hypotheses in enumerate(generated_hyps):
         sorted_hyps = sorted(hypotheses.beams, key=lambda x: x[0])
-        best_hyp = sorted_hyps.pop()[1]
-        best.append(tokenizer.decode(best_hyp.cpu().tolist()))
+        best_score, best_hyp = sorted_hyps.pop()
+        best.append([tokenizer.decode(best_hyp.cpu().tolist()), best_score])
         best_ids.append(best_hyp.cpu().tolist())
 
     return best, best_ids

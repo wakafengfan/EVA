@@ -1,6 +1,7 @@
 #! /bin/bash
 
-WORKING_DIR=/home/coai/EVA/
+# WORKING_DIR=/home/coai/EVA/
+WORKING_DIR=/workspace/EVA
 
 MP_SIZE=1
 

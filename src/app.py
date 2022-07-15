@@ -300,6 +300,7 @@ def generate_samples_v2():
             query[-1] = query[-1].replace(n, '小哥哥'+n)
     if len(query) > 1 and query[-2].startswith('bot:'):
         query[-2] = query[-2].replace('elf', '我')
+        query[-2] = query[-2].replace('主人', '你')
         for ci, c in enumerate(query[-2][::-1]):
             if c == '！' and ci > 2:
                 query[-2] = query[-2][::-1][:ci][::-1]
@@ -354,25 +355,29 @@ def generate_samples_v2():
         for i, t in enumerate(generation_texts):
             t = t.replace('!', '！')
             t = t.replace('你','主人').replace('您', '主人')
-            if any(_ in t for _ in ['我的妈呀', '我的天啊', '我的天', '我不是药神']) or len(re.findall('《.*我.*》', t)) > 0:
-                res_list.append(t)
-            else:
-                res_list.append(t.replace('我', 'ELF').replace('我们', 'ELF'))
+            if not (any(_ in t for _ in ['我的妈呀', '我的天啊', '我的天', '我不是药神']) or len(re.findall('《.*我.*》', t)) > 0):
+                t = t.replace('我', 'ELF').replace('我们', 'ELF')
             
             # 吃过-还没吃， 去过-还没去
             if len(input_list)>1 and ('吃过' in input_list[0] and '没吃过' not in input_list[0]):
-                if '还没吃' in t and not (len(res_list) == 0 and i == len(generation_texts)-1):
+                if  any(_ in t for _ in ['还没吃', ',没吃呢,']) and not (len(res_list) == 0 and i == len(generation_texts)-1):
                     continue
-                res_list.append(t)
             
-            # elf是主人
+            # elf是主人的
             if re.search('ELF是.*的主人', t):
-                res_list.append(t.replace('的主人', '的,主人'))
+                t = t.replace('的主人', '的,主人')
+            # elf是主人
+            for invalid in ['ELF是主人,', 'ELF是主人啊']:
+                if invalid in t:
+                    t = t.replace('是主人', '就是ELF')
+
+            res_list.append(t)
         
-        special = ["早上好", "晚上好", "上午好", "下午好", "哈喽", "hello", "你好"]
+        # special = ["早上好", "晚上好", "上午好", "下午好", "哈喽", "hello", "你好"]
+        special = ["哈喽", "hello", "你好", '您好', '你好呀', '你好啊']
         for s in special:
-            if len(input_list) == 1 and s in input_list[0]:
-                res_list = [t if s in t else s for t in res_list]
+            if s == input_list[-1]:
+                res_list[0] = s.replace('你', '主人').replace('您', '主人')
                 break
 
         if return_flag == '1':

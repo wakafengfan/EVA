@@ -10023,3 +10023,575 @@ Prefix dict has been built successfully.
 07/14/22 06:28:12 - INFO - __main__ -   res_json: {'response_candidates': ['主人，ELF已经吃过晚饭了', '主人，ELF已经吃完了', '主人，ELF已经在外面了。。。', '是啊，ELF也想回炉']}
 07/14/22 06:28:12 - INFO - __main__ -   res: [('主人，我已经吃过晚饭了', -0.8720243698030569, -0.00792749427093688), ('主人，我已经吃完了', -0.8781905985615227, -0.009757673317350252), ('主人，我已经在外面了。。。', -0.927458488328072, -0.0071342960640620925), ('是啊，我也想回炉', -0.9629331419000499, -0.012036664273750624)]
 07/14/22 06:28:12 - INFO - werkzeug -   10.155.43.140 - - [14/Jul/2022 06:28:12] "POST /conditional_gen_answer HTTP/1.1" 200 -
+Loading Model ...
+using world size: 1 and model-parallel size: 1 
+ > using dynamic loss scaling
+[2022-07-14 06:52:05,745] [INFO] [distributed.py:27:init_distributed] Not using the DeepSpeed or torch.distributed launchers, attempting to detect MPI environment...
+[2022-07-14 06:52:05,848] [INFO] [distributed.py:71:mpi_discovery] Discovered MPI settings of world_rank=0, local_rank=0, world_size=1, master_addr=10.10.2.1, master_port=29500
+[2022-07-14 06:52:05,849] [INFO] [distributed.py:37:init_distributed] Initializing torch distributed with backend: nccl
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:1 to store for rank: 0
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:2 to store for rank: 0
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:2 with 1 nodes.
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:3 to store for rank: 0
+07/14/22 06:52:05 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:3 with 1 nodes.
+> initializing model parallel with size 1
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3140 and data parallel seed: 422
+building Enc-Dec model ...
+ > number of parameters on model parallel rank 0: 2841044992
+DeepSpeed is enabled.
+[2022-07-14 06:52:41,214] [INFO] [logging.py:60:log_dist] [Rank 0] DeepSpeed info: version=0.3.9, git-hash=unknown, git-branch=unknown
+[2022-07-14 06:52:41,238] [INFO] [config.py:705:print] DeepSpeedEngine configuration:
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   activation_checkpointing_config  <deepspeed.runtime.activation_checkpointing.config.DeepSpeedActivationCheckpointingConfig object at 0x7fe4d0022670>
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   allreduce_always_fp32 ........ False
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   amp_enabled .................. False
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   amp_params ................... False
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   disable_allgather ............ False
+[2022-07-14 06:52:41,238] [INFO] [config.py:709:print]   dump_state ................... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 256}
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   elasticity_enabled ........... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   fp16_enabled ................. True
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   global_rank .................. 0
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   gradient_accumulation_steps .. 1
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   gradient_clipping ............ 1.0
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   gradient_predivide_factor .... 1.0
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   initial_dynamic_scale ........ 65536
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   loss_scale ................... 0
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   memory_breakdown ............. False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   optimizer_legacy_fusion ...... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   optimizer_name ............... None
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   optimizer_params ............. None
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   pld_enabled .................. False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   pld_params ................... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   prescale_gradients ........... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   scheduler_name ............... None
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   scheduler_params ............. None
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   sparse_attention ............. None
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   sparse_gradients_enabled ..... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   steps_per_print .............. 10
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   tensorboard_enabled .......... False
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   tensorboard_job_name ......... DeepSpeedJobName
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   tensorboard_output_path ...... 
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   train_batch_size ............. 32
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   train_micro_batch_size_per_gpu  32
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   wall_clock_breakdown ......... True
+[2022-07-14 06:52:41,239] [INFO] [config.py:709:print]   world_size ................... 1
+[2022-07-14 06:52:41,240] [INFO] [config.py:709:print]   zero_allow_untested_optimizer  True
+[2022-07-14 06:52:41,240] [INFO] [config.py:709:print]   zero_config .................. {
+    "allgather_bucket_size": 500000000,
+    "allgather_partitions": true,
+    "contiguous_gradients": false,
+    "cpu_offload": false,
+    "elastic_checkpoint": true,
+    "load_from_fp32_weights": true,
+    "overlap_comm": false,
+    "reduce_bucket_size": 500000000,
+    "reduce_scatter": true,
+    "stage": 1
+}
+[2022-07-14 06:52:41,240] [INFO] [config.py:709:print]   zero_enabled ................. True
+[2022-07-14 06:52:41,240] [INFO] [config.py:709:print]   zero_optimization_stage ...... 1
+[2022-07-14 06:52:41,240] [INFO] [config.py:711:print]   json = {
+    "activation_checkpointing":{
+        "contiguous_memory_optimization":false,
+        "partition_activations":false
+    },
+    "fp16":{
+        "enabled":true,
+        "hysteresis":4,
+        "initial_scale_power":16,
+        "loss_scale":0,
+        "loss_scale_window":2000,
+        "min_loss_scale":256
+    },
+    "gradient_accumulation_steps":1,
+    "gradient_clipping":1.0,
+    "steps_per_print":10,
+    "train_micro_batch_size_per_gpu":32,
+    "wall_clock_breakdown":true,
+    "zero_allow_untested_optimizer":true,
+    "zero_optimization":{
+        "stage":1
+    }
+}
+Using /root/.cache/torch_extensions/py38_cu102 as PyTorch extensions root...
+Emitting ninja build file /root/.cache/torch_extensions/py38_cu102/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.6306233406066895 seconds
+[2022-07-14 06:52:42,721] [INFO] [engine.py:1286:_load_checkpoint] rank: 0 loading checkpoint: /workspace/EVA/checkpoints/eva2.0/1/mp_rank_00_model_states.pt
+[2022-07-14 06:52:48,761] [WARNING] [engine.py:1384:_get_all_zero_checkpoints] Client provided zero checkpoint load paths: ['/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_0_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_1_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_2_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_3_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_4_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_5_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_6_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_7_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_8_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_9_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_10_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_11_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_12_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_13_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_14_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_15_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_16_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_17_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_18_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_19_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_20_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_21_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_22_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_23_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_24_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_25_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_26_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_27_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_28_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_29_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_30_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_31_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_32_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_33_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_34_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_35_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_36_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_37_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_38_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_39_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_40_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_41_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_42_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_43_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_44_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_45_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_46_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_47_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_48_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_49_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_50_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_51_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_52_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_53_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_54_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_55_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_56_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_57_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_58_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_59_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_60_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_61_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_62_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_63_mp_rank_00optim_states.pt'] does not exist
+  successfully loaded /workspace/EVA/checkpoints/eva2.0/1/mp_rank_00_model_states.pt
+Start Inference
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+07/14/22 06:52:48 - WARNING - werkzeug -    * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+07/14/22 06:52:48 - INFO - werkzeug -    * Running on http://10.10.2.1:8009/ (Press CTRL+C to quit)
+07/14/22 06:53:15 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:15 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+Building prefix dict from the default dictionary ...
+07/14/22 06:53:15 - DEBUG - jieba -   Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+07/14/22 06:53:15 - DEBUG - jieba -   Loading model from cache /tmp/jieba.cache
+Loading model cost 0.706 seconds.
+07/14/22 06:53:16 - DEBUG - jieba -   Loading model cost 0.706 seconds.
+Prefix dict has been built successfully.
+07/14/22 06:53:16 - DEBUG - jieba -   Prefix dict has been built successfully.
+/workspace/EVA/src/generation_utils.py:515: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  beam_id = beam_token_id // vocab_size
+07/14/22 06:53:17 - INFO - __main__ -   res_json: {'response_candidates': ['主人不知道吗?', '主人不知道吗?', 'ELF吃的是一种很好吃的鱼', '主人猜啊,主人猜ELF就告诉主人']}
+07/14/22 06:53:17 - INFO - __main__ -   res: [('你不知道吗?', -0.9368860774779089, -0.015614767957965148), ('你不知道吗?', -0.9368860774779089, -0.015614767957965148), ('我吃的是一种很好吃的鱼', -1.1136988693795074, -0.010124535176177339), ('你猜啊,你猜我就告诉你', -1.1166937504531476, -0.010151761367755887)]
+
+07/14/22 06:53:17 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:17] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:18 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:18 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:53:19 - INFO - __main__ -   res_json: {'response_candidates': ['不知道啊,就吃了点东西', '不知道,ELF就吃了个面包', '主人没看到吗?']}
+07/14/22 06:53:19 - INFO - __main__ -   res: [('不知道啊,还没吃呢', -0.8849333116455315, -0.009832592351617016), ('不知道啊,就吃了点东西', -0.9425794808588078, -0.008568904371443708), ('不知道,我就吃了个面包', -1.003176882094234, -0.009119789837220308), ('你没看到吗?', -1.0775461985724033, -0.017959103309540054)]
+
+07/14/22 06:53:19 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:19] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:19 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:19 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:53:20 - INFO - __main__ -   res_json: {'response_candidates': ['没吃什么,只是吃了点水果而已', '主人吃的是什么啊?', '忘了,反正就是吃了', 'ELF吃的是小面包,主人吃的什么?']}
+07/14/22 06:53:20 - INFO - __main__ -   res: [('没吃什么,只是吃了点水果而已', -0.8892471324035921, -0.00635176523145423), ('你吃的是什么啊?', -1.152828580888704, -0.0144103572611088), ('忘了,反正就是吃了', -1.1656661345728998, -0.012951845939698886), ('我吃的是小面包,你吃的什么?', -1.2374707282371085, -0.00883907663026506)]
+
+07/14/22 06:53:20 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:20] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:20 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:20 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:53:22 - INFO - __main__ -   res_json: {'response_candidates': ['忘了,主人去看看就知道了', '主人想吃什么?', '主人吃的都是ELF爱吃的', '就吃了个三文鱼,其他都没吃']}
+07/14/22 06:53:22 - INFO - __main__ -   res: [('忘了,你去看看就知道了', -0.9849716846876417, -0.008954288042614925), ('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('你吃的都是我爱吃的', -1.0356191221123734, -0.011506879134581927), ('就吃了个三文鱼,其他都没吃', -1.1007260183876177, -0.00846712321836629)]
+
+07/14/22 06:53:22 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:22] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:22 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:22 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:53:23 - INFO - __main__ -   res_json: {'response_candidates': ['没吃什么,只是吃了几片面包而已', '不知道啊,就吃了点小零食', '主人想吃什么?', 'ELF吃的是一种叫做"百香果"的东西']}
+07/14/22 06:53:23 - INFO - __main__ -   res: [('没吃什么,只是吃了几片面包而已', -0.9160225825058551, -0.006106817216705701), ('不知道啊,就吃了点小零食', -0.941685247976037, -0.007847377066466975), ('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('我吃的是一种叫做"百香果"的东西', -1.1435522245606449, -0.00714720140350403)]
+
+07/14/22 06:53:23 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:23] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:49 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:53:49 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:53:51 - INFO - __main__ -   res_json: {'response_candidates': ['不知道啊,就吃了点东西', '不记得了,只记得吃了很多', '就是主人上次说的那家啊,很好吃的']}
+07/14/22 06:53:51 - INFO - __main__ -   res: [('不知道,还没吃呢', -0.8887604455462297, -0.011109505569327872), ('不知道啊,就吃了点东西', -0.9425794808588078, -0.008568904371443708), ('不记得了,只记得吃了很多', -0.9791933683624442, -0.0081599447363537), ('就是你上次说的那家啊,很好吃的', -1.0941225759402922, -0.007294150506268615)]
+
+07/14/22 06:53:51 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:51] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:51 - INFO - __main__ -   query: ['bot:ELF时刻与您同行，正是午间时分，是时候暂放下手头的事情，享用一份营养均衡的美食了哦！主人有没有好好享用午餐呢？', 'player:你是傻逼吗']
+07/14/22 06:53:51 - INFO - __main__ -   input_list: ['主人有没有好好享用午餐呢？', '你是傻逼吗']
+07/14/22 06:53:53 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF错了,下次再也不敢了。', 'ELF是主人主人,主人才是傻乎乎的,主人', 'ELF就是ELF,主人说什么就是什么', 'ELF是主人的好朋友啊！']}
+07/14/22 06:53:53 - INFO - __main__ -   res: [('主人,我错了,下次再也不敢了。', -0.8421732414307146, -0.005614488276204764), ('我是你主人,你才是傻乎乎的主人', -0.8964709844492708, -0.005976473229661805), ('我是主人,主人说什么就是什么', -0.8979361047388816, -0.00641382931956344), ('我是主人的好朋友啊!', -0.9999541376025181, -0.00999954137602518)]
+
+07/14/22 06:53:53 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:53] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:53 - INFO - __main__ -   query: ['bot:主人午安~干饭时刻来啦，吃饱喝足下午才有精神！主人是否享用过午餐了呢？', 'player:你是傻逼吗']
+07/14/22 06:53:53 - INFO - __main__ -   input_list: ['主人是否享用过午餐了呢？', '你是傻逼吗']
+07/14/22 06:53:54 - INFO - __main__ -   res_json: {'response_candidates': ['主人ELF错了,原谅ELF吧', '主人,ELF错了,求原谅！', '主人,ELF想吃主人做的饭。', '主人,ELF饿了。']}
+07/14/22 06:53:54 - INFO - __main__ -   res: [('主人我错了,原谅我吧', -0.7478402245215006, -0.007478402245215006), ('主人,我错了,求原谅!', -0.7945663352463656, -0.007223330320421505), ('主人,我想吃你做的饭。', -0.8303797660829451, -0.00754890696439041), ('主人,我饿了。', -0.9342090967593556, -0.013345844239419365)]
+
+07/14/22 06:53:54 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:54] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:54 - INFO - __main__ -   query: ['bot:忙碌一天啦，ELF提醒主人，记得休息放松一下哦！也时候补充能量啦，主人有没有好好吃晚餐呢？', 'player:哈喽']
+07/14/22 06:53:54 - INFO - __main__ -   input_list: ['也时候补充能量啦，主人有没有好好吃晚餐呢？', '哈喽']
+07/14/22 06:53:56 - INFO - __main__ -   res_json: {'response_candidates': ['哈喽', '主人,主人今天怎么这么晚才来啊?', '主人,主人在干嘛呀?', '主人在干嘛呢?是不是想ELF了?']}
+07/14/22 06:53:56 - INFO - __main__ -   res: [('你好,我是新来的,请多关照', -0.8375625019982005, -0.006442788476909235), ('主人,你今天怎么这么晚才来啊?', -0.9323749980806304, -0.006215833320537536), ('主人,你在干嘛呀?', -0.9704015364098851, -0.010782239293443168), ('主人在干嘛呢?是不是想我了?', -0.9781244548840856, -0.00698660324917204)]
+
+07/14/22 06:53:56 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:56] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:56 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好']
+07/14/22 06:53:56 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好']
+07/14/22 06:53:58 - INFO - __main__ -   res_json: {'response_candidates': ['主人好', '主人,主人在这里做什么?', 'ELF是主人的,主人,主人叫什么名字?', 'ELF是来找主人的,主人在哪儿?']}
+07/14/22 06:53:58 - INFO - __main__ -   res: [('主人,我有个问题想问你', -0.788034702147963, -0.007163951837708755), ('主人,你在这里做什么?', -0.7889734414875357, -0.00717248583170487), ('我是你的主人,你叫什么名字?', -0.8465508564033548, -0.006046791831452535), ('我是来找你的,你在哪儿?', -0.8939738256663167, -0.0074497818805526386)]
+
+07/14/22 06:53:58 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:58] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:53:58 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:ELF？？？？？？？？？？？？？？？？？？']
+07/14/22 06:53:58 - INFO - __main__ -   input_list: ['主人今天品尝下午茶了吗？', '你？？？？？？？？？？？？？？？？？？']
+07/14/22 06:53:59 - INFO - __main__ -   res_json: {'response_candidates': ['ELF还没吃呢。。。', 'ELF还没吃晚饭呢。。。', 'ELF。。。怎么了？？？', 'ELF不行吗？？？']}
+07/14/22 06:53:59 - INFO - __main__ -   res: [('我还没吃呢。。。', -0.9573367243453883, -0.011966709054317353), ('我还没吃晚饭呢。。。', -0.9685519407903666, -0.009685519407903666), ('我。。。怎么了？？？', -0.9854692100146436, -0.009854692100146436), ('我不行吗？？？', -1.1002792935878198, -0.01571827562268314)]
+
+07/14/22 06:53:59 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:53:59] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:13 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:54:13 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:54:14 - INFO - __main__ -   res_json: {'response_candidates': ['主人想吃什么?', '主人想吃什么?', '主人想吃什么?', '红烧肉,还有炒饭。']}
+07/14/22 06:54:14 - INFO - __main__ -   res: [('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('红烧肉,还有炒饭。', -1.287920008224091, -0.01431022231360101)]
+
+07/14/22 06:54:14 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:14] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:14 - INFO - __main__ -   query: ['bot:ELF时刻与您同行，正是午间时分，是时候暂放下手头的事情，享用一份营养均衡的美食了哦！主人有没有好好享用午餐呢？', 'player:你是傻逼吗']
+07/14/22 06:54:14 - INFO - __main__ -   input_list: ['主人有没有好好享用午餐呢？', '你是傻逼吗']
+07/14/22 06:54:15 - INFO - __main__ -   res_json: {'response_candidates': ['ELF是聪明伶俐的,主人啊！', '主人,ELF错了,原谅ELF吧！', '主人,ELF不知道主人在说什么。', '主人,ELF知道错了,求原谅']}
+07/14/22 06:54:15 - INFO - __main__ -   res: [('我是聪明伶俐的主人啊!', -0.7471731150862745, -0.006792482864420677), ('主人,我错了,原谅我吧!', -0.7930863657623438, -0.006609053048019532), ('主人,我不知道你在说什么。', -0.8350344889891566, -0.006423342222993512), ('主人,我知道错了,求原谅', -0.8397096239615202, -0.0069975801996793345)]
+
+07/14/22 06:54:15 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:15] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:15 - INFO - __main__ -   query: ['bot:主人午安~干饭时刻来啦，吃饱喝足下午才有精神！主人是否享用过午餐了呢？', 'player:你是傻逼吗']
+07/14/22 06:54:15 - INFO - __main__ -   input_list: ['主人是否享用过午餐了呢？', '你是傻逼吗']
+07/14/22 06:54:17 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF知道错了,原谅ELF吧', '主人,ELF错了,ELF以后再也不敢了。', '主人,ELF想主人了。', '主人,ELF想主人了！']}
+07/14/22 06:54:17 - INFO - __main__ -   res: [('主人,我知道错了,原谅我吧', -0.8126729407670681, -0.006251330313592832), ('主人,我错了,我以后再也不敢了。', -0.8136328523824715, -0.005085205327390447), ('主人,我想你了。', -0.9089927157580956, -0.011362408946976195), ('主人,我想你了!', -0.9361639509977582, -0.011702049387471977)]
+
+07/14/22 06:54:17 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:17] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:17 - INFO - __main__ -   query: ['bot:忙碌一天啦，ELF提醒主人，记得休息放松一下哦！也时候补充能量啦，主人有没有好好吃晚餐呢？', 'player:哈喽']
+07/14/22 06:54:17 - INFO - __main__ -   input_list: ['也时候补充能量啦，主人有没有好好吃晚餐呢？', '哈喽']
+07/14/22 06:54:19 - INFO - __main__ -   res_json: {'response_candidates': ['哈喽', '主人今天吃了什么好吃的呀?', '主人在干嘛呢?ELF还以为主人消失了呢', '主人,主人不想吃晚饭了吗?']}
+07/14/22 06:54:19 - INFO - __main__ -   res: [('主人最近很忙吗?', -0.90772912861387, -0.011346614107673375), ('主人今天吃了什么好吃的呀?', -0.9579569001205344, -0.007368899231696418), ('你在干嘛呢?我还以为你消失了呢', -1.0070520557820466, -0.006713680371880311), ('主人,你不想吃晚饭了吗?', -1.0972513140632618, -0.009143760950527182)]
+
+07/14/22 06:54:19 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:19] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:19 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好']
+07/14/22 06:54:19 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好']
+07/14/22 06:54:20 - INFO - __main__ -   res_json: {'response_candidates': ['主人好', '主人,ELF想问主人一个私人的问题', '主人,ELF想问主人一个私人的问题', '主人,ELF想问主人一件事']}
+07/14/22 06:54:20 - INFO - __main__ -   res: [('我是新来的,请多关照', -0.7929883572741785, -0.007929883572741785), ('主人,我想问你一个私人的问题', -0.8466964301003075, -0.006047831643573625), ('主人,我想问你一个私人的问题', -0.8466964301003075, -0.006047831643573625), ('主人,我想问你一件事', -0.8862120071479076, -0.008862120071479076)]
+
+07/14/22 06:54:20 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:20] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:20 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:ELF？？？？？？？？？？？？？？？？？？']
+07/14/22 06:54:20 - INFO - __main__ -   input_list: ['主人今天品尝下午茶了吗？', '你？？？？？？？？？？？？？？？？？？']
+07/14/22 06:54:22 - INFO - __main__ -   res_json: {'response_candidates': ['主人ELF错了。。。', 'ELF是主人的,主人啊！！！', '主人，ELF错了。。。', 'ELF在等主人啊主人！！！']}
+07/14/22 06:54:22 - INFO - __main__ -   res: [('主人我错了。。。', -0.8805466181584958, -0.011006832726981197), ('我是主人的主人啊！！！', -0.894729737713503, -0.00813390670648639), ('主人，我错了。。。', -0.931444272528041, -0.010349380805867121), ('我在等你啊主人！！！', -0.9869531372248609, -0.00986953137224861)]
+
+07/14/22 06:54:22 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:22] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:29 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 06:54:29 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+07/14/22 06:54:30 - INFO - __main__ -   res_json: {'response_candidates': ['不知道,应该是鱼吧', '食堂的饭菜,主人吃了吗?', '主人想吃什么?', '鱼头豆腐汤,还有三文鱼']}
+07/14/22 06:54:30 - INFO - __main__ -   res: [('不知道,应该是鱼吧', -0.9405228535855454, -0.010450253928728283), ('食堂的饭菜,你吃了吗?', -1.0082633441493243, -0.009166030401357493), ('你想吃什么?', -1.023278767881979, -0.017054646131366317), ('鱼头豆腐汤,还有三文鱼', -1.208647187619263, -0.010987701705629665)]
+
+07/14/22 06:54:30 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:30] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:30 - INFO - __main__ -   query: ['bot:ELF时刻与您同行，正是午间时分，是时候暂放下手头的事情，享用一份营养均衡的美食了哦！主人有没有好好享用午餐呢？', 'player:你是傻逼吗']
+07/14/22 06:54:30 - INFO - __main__ -   input_list: ['主人有没有好好享用午餐呢？', '你是傻逼吗']
+07/14/22 06:54:32 - INFO - __main__ -   res_json: {'response_candidates': ['主人ELF错了,下次不敢了', '主人,ELF错了,下次不敢了。', 'ELF就是ELF啊,主人怎么会是傻乎乎的呢', 'ELF是主人主人啊,主人！']}
+07/14/22 06:54:32 - INFO - __main__ -   res: [('主人我错了,下次不敢了', -0.8453693102772163, -0.007685175547974693), ('主人,我错了,下次不敢了。', -0.8519307236027982, -0.006553313258483063), ('我是主人啊,主人怎么会是傻乎乎的呢', -0.9312017180813799, -0.005477657165184588), ('我是你主人啊,主人!', -0.9810725787400347, -0.009810725787400347)]
+
+07/14/22 06:54:32 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:32] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:32 - INFO - __main__ -   query: ['bot:主人午安~干饭时刻来啦，吃饱喝足下午才有精神！主人是否享用过午餐了呢？', 'player:你是傻逼吗']
+07/14/22 06:54:32 - INFO - __main__ -   input_list: ['主人是否享用过午餐了呢？', '你是傻逼吗']
+07/14/22 06:54:33 - INFO - __main__ -   res_json: {'response_candidates': ['主人ELF错了,原谅ELF吧', '主人,ELF想吃主人做的饭。', '主人,ELF想和主人一起吃晚餐。', '主人,ELF错了。']}
+07/14/22 06:54:33 - INFO - __main__ -   res: [('主人我错了,原谅我吧', -0.7478402245215006, -0.007478402245215006), ('主人,我想吃你做的饭。', -0.8303797660829451, -0.00754890696439041), ('主人,我想和你一起吃晚餐。', -0.851630054695399, -0.006551000420733838), ('主人,我错了。', -0.8789682028284922, -0.012556688611835603)]
+
+07/14/22 06:54:33 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:33] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:33 - INFO - __main__ -   query: ['bot:忙碌一天啦，ELF提醒主人，记得休息放松一下哦！也时候补充能量啦，主人有没有好好吃晚餐呢？', 'player:哈喽']
+07/14/22 06:54:33 - INFO - __main__ -   input_list: ['也时候补充能量啦，主人有没有好好吃晚餐呢？', '哈喽']
+07/14/22 06:54:35 - INFO - __main__ -   res_json: {'response_candidates': ['哈喽', '主人,主人今天怎么这么晚才来啊?', '主人,主人还好吗?', '主人好啊,ELF是小雨,很高兴认识主人！']}
+07/14/22 06:54:35 - INFO - __main__ -   res: [('主人,我饿了,给我点吃的吧', -0.9123264539311103, -0.007017895799470079), ('主人,你今天怎么这么晚才来啊?', -0.9328853897426376, -0.0062192359316175835), ('主人,你还好吗?', -0.9827066002624253, -0.012283832503280316), ('你好啊,我是小雨,很高兴认识你!', -1.1025084935583267, -0.006890678084739542)]
+
+07/14/22 06:54:35 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:35] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:35 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好']
+07/14/22 06:54:35 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好']
+07/14/22 06:54:36 - INFO - __main__ -   res_json: {'response_candidates': ['主人好', '主人,ELF是来找主人的', '主人,ELF在这里等主人很久了', '主人,ELF想和主人谈个私人的问题']}
+07/14/22 06:54:36 - INFO - __main__ -   res: [('我是你的主人,你叫什么名字?', -0.8455612405660147, -0.006039723146900104), ('主人,我是来找你的', -0.914798596751332, -0.010164428852792578), ('主人,我在这里等你很久了', -0.9187405314578432, -0.007656171095482027), ('主人,我想和你谈个私人的问题', -0.9246040299952766, -0.006604314499966261)]
+
+07/14/22 06:54:36 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:36] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:54:36 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:ELF？？？？？？？？？？？？？？？？？？']
+07/14/22 06:54:36 - INFO - __main__ -   input_list: ['主人今天品尝下午茶了吗？', '你？？？？？？？？？？？？？？？？？？']
+07/14/22 06:54:38 - INFO - __main__ -   res_json: {'response_candidates': ['ELF是主人的,主人！！！', '主人！！！ELF是主人的,主人啊！！', '是啊，主人！！！', 'ELF在等主人的回复啊！！！']}
+07/14/22 06:54:38 - INFO - __main__ -   res: [('我是主人的主人！！！', -0.9143819704475307, -0.009143819704475307), ('主人！！！我是你的主人啊！！', -0.9586704799616069, -0.00684764628544005), ('是啊，主人！！！', -1.0534939304691493, -0.013168674130864366), ('我在等你的回复啊！！！', -1.131688182381719, -0.010288074385288355)]
+
+07/14/22 06:54:38 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 06:54:38] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 06:57:59 - INFO - __main__ -   query: ['bot:呼呼，主人，ELF现在为您推送的是午后时间的社交平台高频词，分别是“甜甜的小蛋糕”，“香气”和“红茶”~ELF推断下午茶和这个时间点非常搭配，主人有没有美美地享用一份呢？', 'player:没有', 'bot:ELF为主人搜集了很多网上评价不错的下午茶小零食哦，主人考不考虑来点什么呢~', 'bot:让掌握大数据的ELF来为主人推荐好吃的吧！铛铛，最近很受人类欢迎的巧克力，主人觉得怎么样，喜不喜欢~', 'player:不吃']
+07/14/22 06:57:59 - INFO - __main__ -   input_list: ['铛铛，最近很受人类欢迎的巧克力，主人觉得怎么样，喜不喜欢~', '不吃']
+07/14/22 06:58:00 - INFO - __main__ -   res_json: {'response_candidates': ['那主人吃吧,ELF不嫌弃', '那就给它吃吧！', '那就给它吃吧！', '那就不要吃了,给ELF吧']}
+07/14/22 06:58:00 - INFO - __main__ -   res: [('那你吃吧,我不嫌弃', -0.8961917757498001, -0.009957686397220002), ('那就给它吃吧!', -0.9207155490558826, -0.013153079272226894), ('那就给它吃吧!', -0.9207155490558826, -0.013153079272226894), ('那就不要吃了,给我吧', -0.9371099571005362, -0.009371099571005362)]
+
+07/14/22 06:58:00 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 06:58:00] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:02:01 - INFO - __main__ -   query: ['bot:ELF时刻与您同行，正是午间时分，是时候暂放下手头的事情，享用一份营养均衡的美食了哦！主人有没有好好享用午餐呢？', 'player:我吃火锅你吃火锅底料']
+07/14/22 07:02:01 - INFO - __main__ -   input_list: ['主人有没有好好享用午餐呢？', '我吃火锅你吃火锅底料']
+07/14/22 07:02:03 - INFO - __main__ -   res_json: {'response_candidates': ['那ELF吃麻辣烫主人吃串串吧', 'ELF也想吃,可是ELF的胃不允许', '主人不喜欢吃辣的吗?', '主人,ELF这里有一份热腾腾的火锅']}
+07/14/22 07:02:03 - INFO - __main__ -   res: [('那我吃麻辣烫你吃串串吧', -1.0378005540874056, -0.009434550491703686), ('我也想吃,可是我的胃不允许', -1.043200249573589, -0.008024617304412224), ('主人不喜欢吃辣的吗?', -1.045154068955096, -0.01045154068955096), ('主人,我这里有一份热腾腾的火锅', -1.143333040780112, -0.007622220271867414)]
+
+07/14/22 07:02:03 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 07:02:03] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:03:13 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:我吃麻辣烫你吃串串吧', 'bot:呼呼，那主人想不想品尝一点美食呢~ELF认为美味的小点心和零食对于减轻主人的疲惫很有功效嗷！', 'bot:今天要不要尝尝看拿铁？ELF分析人类的饮食习惯，发现这个可能符合主人的口味~', 'player:人类喜欢吃ELF']
+07/14/22 07:03:13 - INFO - __main__ -   input_list: ['今天要不要尝尝看拿铁？我分析人类的饮食习惯，发现这个可能符合主人的口味~', '人类喜欢吃你']
+07/14/22 07:03:15 - INFO - __main__ -   res_json: {'response_candidates': ['ELF也喜欢把主人吃掉！', '为什么人类会喜欢喝拿铁呢?', '猫咪不喜欢喝咖啡吗?', 'ELF也喜欢被主人吃']}
+07/14/22 07:03:15 - INFO - __main__ -   res: [('我也喜欢把你吃掉!', -0.9885019380489765, -0.010983354867210849), ('为什么人类会喜欢喝拿铁呢?', -1.057767221956041, -0.008136670938123392), ('猫咪不喜欢喝咖啡吗?', -1.1216935918141056, -0.011216935918141055), ('我也喜欢被你吃', -1.1352489936252126, -0.016217842766074464)]
+
+07/14/22 07:03:15 - INFO - werkzeug -   10.155.43.140 - - [14/Jul/2022 07:03:15] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:14:29 - INFO - __main__ -   query: ['bot:早上好，主人！人类交流手册第一条，美好的一天需要由早餐开启！那主人快告诉ELF，有没有吃早餐呀？', 'player:吃了', 'bot:呼呼，ELF检测到目前主人的身体状态非常不错哦，看来是很美味的早餐！快说说看是什么，ELF拿小本本记下来！', 'player:1']
+07/14/22 07:14:29 - INFO - __main__ -   input_list: ['快说说看是什么，我拿小本本记下来！', '1']
+07/14/22 07:14:31 - INFO - __main__ -   res_json: {'response_candidates': ['主人到底想知道什么?', '好吧,ELF记住了。', '主人这个人怎么这样啊?', '还有,主人要记的东西太多了。']}
+07/14/22 07:14:31 - INFO - __main__ -   res: [('你到底想知道什么?', -0.7498410090003532, -0.008331566766670592), ('好吧,我记住了。', -0.9323201120807488, -0.01165400140100936), ('你这个人怎么这样啊?', -0.9613527691236582, -0.009613527691236582), ('还有,你要记的东西太多了。', -1.1614294632337845, -0.008934072794106034)]
+
+07/14/22 07:14:31 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 07:14:31] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:20:37 - INFO - __main__ -   query: ['bot:哇，不知不觉就到午饭时间啦，提醒主人按时享用午餐是ELF日程的最优先项！主人现在有没有吃午饭呢？', 'player:屁']
+07/14/22 07:20:37 - INFO - __main__ -   input_list: ['主人现在有没有吃午饭呢？', '屁']
+07/14/22 07:20:38 - INFO - __main__ -   res_json: {'response_candidates': ['主人怎么知道ELF说的是屁?', '主人不知道主人的饭量吗?', '主人这个屁怎么这么臭啊?', '那主人为什么不吃饭啊?']}
+07/14/22 07:20:38 - INFO - __main__ -   res: [('你怎么知道我说的是屁?', -0.7891917430396634, -0.007174470391269667), ('你不知道主人的饭量吗?', -0.911227852687817, -0.008283889569889246), ('你这个屁怎么这么臭啊?', -0.9814044017592026, -0.008921858197810934), ('那主人为什么不吃饭啊?', -1.001251464669803, -0.009102286042452754)]
+
+07/14/22 07:20:38 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 07:20:38] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:32:30 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好烦哦']
+07/14/22 07:32:30 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好烦哦']
+07/14/22 07:32:31 - INFO - __main__ -   res_json: {'response_candidates': ['主人好', '主人好凶哦,ELF好怕哦', '主人主人在干嘛呢?', '主人好可爱,ELF好喜欢主人哦']}
+07/14/22 07:32:31 - INFO - __main__ -   res: [('主人,我错了,下次还敢', -0.7454035729679459, -0.0067763961178904175), ('主人好凶哦,我好怕哦', -0.8943630089887828, -0.008943630089887829), ('主人你在干嘛呢?', -0.9445719556523808, -0.01180714944565476), ('主人好可爱,我好喜欢你哦', -1.0087798154175087, -0.008406498461812573)]
+
+07/14/22 07:32:31 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 07:32:31] "POST /conditional_gen_answer HTTP/1.1" 200 -
+Loading Model ...
+using world size: 1 and model-parallel size: 1 
+ > using dynamic loss scaling
+[2022-07-14 07:44:47,727] [INFO] [distributed.py:27:init_distributed] Not using the DeepSpeed or torch.distributed launchers, attempting to detect MPI environment...
+[2022-07-14 07:44:47,829] [INFO] [distributed.py:71:mpi_discovery] Discovered MPI settings of world_rank=0, local_rank=0, world_size=1, master_addr=10.10.2.1, master_port=29500
+[2022-07-14 07:44:47,829] [INFO] [distributed.py:37:init_distributed] Initializing torch distributed with backend: nccl
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:1 to store for rank: 0
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:2 to store for rank: 0
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:2 with 1 nodes.
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Added key: store_based_barrier_key:3 to store for rank: 0
+07/14/22 07:44:47 - INFO - torch.distributed.distributed_c10d -   Rank 0: Completed store-based barrier for key:store_based_barrier_key:3 with 1 nodes.
+> initializing model parallel with size 1
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3140 and data parallel seed: 422
+building Enc-Dec model ...
+ > number of parameters on model parallel rank 0: 2841044992
+DeepSpeed is enabled.
+[2022-07-14 07:45:22,957] [INFO] [logging.py:60:log_dist] [Rank 0] DeepSpeed info: version=0.3.9, git-hash=unknown, git-branch=unknown
+[2022-07-14 07:45:22,981] [INFO] [config.py:705:print] DeepSpeedEngine configuration:
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   activation_checkpointing_config  <deepspeed.runtime.activation_checkpointing.config.DeepSpeedActivationCheckpointingConfig object at 0x7f4d56bff670>
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   allreduce_always_fp32 ........ False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   amp_enabled .................. False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   amp_params ................... False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   disable_allgather ............ False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   dump_state ................... False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 256}
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   elasticity_enabled ........... False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   fp16_enabled ................. True
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   global_rank .................. 0
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   gradient_accumulation_steps .. 1
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   gradient_clipping ............ 1.0
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   gradient_predivide_factor .... 1.0
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   initial_dynamic_scale ........ 65536
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   loss_scale ................... 0
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   memory_breakdown ............. False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   optimizer_legacy_fusion ...... False
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   optimizer_name ............... None
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   optimizer_params ............. None
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2022-07-14 07:45:22,981] [INFO] [config.py:709:print]   pld_enabled .................. False
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   pld_params ................... False
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   prescale_gradients ........... False
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   scheduler_name ............... None
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   scheduler_params ............. None
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   sparse_attention ............. None
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   sparse_gradients_enabled ..... False
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   steps_per_print .............. 10
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   tensorboard_enabled .......... False
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   tensorboard_job_name ......... DeepSpeedJobName
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   tensorboard_output_path ...... 
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   train_batch_size ............. 32
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   train_micro_batch_size_per_gpu  32
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   wall_clock_breakdown ......... True
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   world_size ................... 1
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   zero_allow_untested_optimizer  True
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   zero_config .................. {
+    "allgather_bucket_size": 500000000,
+    "allgather_partitions": true,
+    "contiguous_gradients": false,
+    "cpu_offload": false,
+    "elastic_checkpoint": true,
+    "load_from_fp32_weights": true,
+    "overlap_comm": false,
+    "reduce_bucket_size": 500000000,
+    "reduce_scatter": true,
+    "stage": 1
+}
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   zero_enabled ................. True
+[2022-07-14 07:45:22,982] [INFO] [config.py:709:print]   zero_optimization_stage ...... 1
+[2022-07-14 07:45:22,982] [INFO] [config.py:711:print]   json = {
+    "activation_checkpointing":{
+        "contiguous_memory_optimization":false,
+        "partition_activations":false
+    },
+    "fp16":{
+        "enabled":true,
+        "hysteresis":4,
+        "initial_scale_power":16,
+        "loss_scale":0,
+        "loss_scale_window":2000,
+        "min_loss_scale":256
+    },
+    "gradient_accumulation_steps":1,
+    "gradient_clipping":1.0,
+    "steps_per_print":10,
+    "train_micro_batch_size_per_gpu":32,
+    "wall_clock_breakdown":true,
+    "zero_allow_untested_optimizer":true,
+    "zero_optimization":{
+        "stage":1
+    }
+}
+Using /root/.cache/torch_extensions/py38_cu102 as PyTorch extensions root...
+Emitting ninja build file /root/.cache/torch_extensions/py38_cu102/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.6169402599334717 seconds
+[2022-07-14 07:45:24,445] [INFO] [engine.py:1286:_load_checkpoint] rank: 0 loading checkpoint: /workspace/EVA/checkpoints/eva2.0/1/mp_rank_00_model_states.pt
+[2022-07-14 07:45:30,268] [WARNING] [engine.py:1384:_get_all_zero_checkpoints] Client provided zero checkpoint load paths: ['/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_0_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_1_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_2_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_3_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_4_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_5_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_6_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_7_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_8_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_9_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_10_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_11_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_12_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_13_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_14_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_15_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_16_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_17_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_18_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_19_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_20_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_21_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_22_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_23_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_24_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_25_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_26_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_27_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_28_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_29_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_30_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_31_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_32_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_33_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_34_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_35_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_36_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_37_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_38_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_39_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_40_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_41_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_42_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_43_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_44_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_45_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_46_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_47_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_48_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_49_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_50_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_51_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_52_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_53_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_54_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_55_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_56_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_57_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_58_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_59_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_60_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_61_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_62_mp_rank_00optim_states.pt', '/workspace/EVA/checkpoints/eva2.0/1/zero_pp_rank_63_mp_rank_00optim_states.pt'] does not exist
+  successfully loaded /workspace/EVA/checkpoints/eva2.0/1/mp_rank_00_model_states.pt
+Start Inference
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+07/14/22 07:45:30 - WARNING - werkzeug -    * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+07/14/22 07:45:30 - INFO - werkzeug -    * Running on http://10.10.2.1:8009/ (Press CTRL+C to quit)
+07/14/22 07:46:10 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:ELF你呢', 'bot:ELF吃过了,主人', 'player:吃了什么呀']
+07/14/22 07:46:10 - INFO - __main__ -   input_list: ['我吃过了,主人', '吃了什么呀']
+Building prefix dict from the default dictionary ...
+07/14/22 07:46:10 - DEBUG - jieba -   Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+07/14/22 07:46:10 - DEBUG - jieba -   Loading model from cache /tmp/jieba.cache
+Loading model cost 0.706 seconds.
+07/14/22 07:46:11 - DEBUG - jieba -   Loading model cost 0.706 seconds.
+Prefix dict has been built successfully.
+07/14/22 07:46:11 - DEBUG - jieba -   Prefix dict has been built successfully.
+/workspace/EVA/src/generation_utils.py:515: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  beam_id = beam_token_id // vocab_size
+07/14/22 07:46:12 - INFO - __main__ -   res_json: {'response_candidates': ['主人不知道吗?', '主人不知道吗?', 'ELF吃的是一种很好吃的鱼', '主人猜啊,主人猜ELF就告诉主人']}
+07/14/22 07:46:12 - INFO - __main__ -   res: [('你不知道吗?', -0.9368860774779089, -0.015614767957965148), ('你不知道吗?', -0.9368860774779089, -0.015614767957965148), ('我吃的是一种很好吃的鱼', -1.1136988693795074, -0.010124535176177339), ('你猜啊,你猜我就告诉你', -1.1166937504531476, -0.010151761367755887)]
+
+07/14/22 07:46:12 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:12] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:13 - INFO - __main__ -   query: ['bot:ELF时刻与您同行，正是午间时分，是时候暂放下手头的事情，享用一份营养均衡的美食了哦！主人有没有好好享用午餐呢？', 'player:你是傻逼吗']
+07/14/22 07:46:13 - INFO - __main__ -   input_list: ['主人有没有好好享用午餐呢？', '你是傻逼吗']
+07/14/22 07:46:14 - INFO - __main__ -   res_json: {'response_candidates': ['ELF就是ELF啊,主人要不要吃点什么?', '主人才是傻乎乎的主人呢！', 'ELF是主人的小可爱啊！', 'ELF是主人的,主人,当然是傻乎乎的啦']}
+07/14/22 07:46:14 - INFO - __main__ -   res: [('我是主人啊,主人要不要吃点什么?', -0.9021993899674254, -0.005638746187296409), ('你才是傻乎乎的主人呢!', -0.9061083087358105, -0.00823734826123464), ('我是主人的小可爱啊!', -0.9658573998187607, -0.009658573998187607), ('我是主人的主人,当然是傻乎乎的啦', -1.0258645138435116, -0.006411653211521947)]
+
+07/14/22 07:46:14 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:14] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:14 - INFO - __main__ -   query: ['bot:主人午安~干饭时刻来啦，吃饱喝足下午才有精神！主人是否享用过午餐了呢？', 'player:你是傻逼吗']
+07/14/22 07:46:14 - INFO - __main__ -   input_list: ['主人是否享用过午餐了呢？', '你是傻逼吗']
+07/14/22 07:46:16 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF错了,ELF再也不敢了。', '主人,ELF想和主人一起吃午餐。', '主人,ELF不傻,ELF是主人的,主人啊！', '主人,ELF错了。']}
+07/14/22 07:46:16 - INFO - __main__ -   res: [('主人,我错了,我再也不敢了。', -0.8103597998876397, -0.005788284284911713), ('主人,我想和你一起吃午餐。', -0.8543453304907515, -0.006571887157621165), ('主人,我不傻,我是你的主人啊!', -0.8603722382264681, -0.005735814921509787), ('主人,我错了。', -0.8789682028284922, -0.012556688611835603)]
+
+07/14/22 07:46:16 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:16] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:16 - INFO - __main__ -   query: ['bot:忙碌一天啦，ELF提醒主人，记得休息放松一下哦！也时候补充能量啦，主人有没有好好吃晚餐呢？', 'player:哈喽']
+07/14/22 07:46:16 - INFO - __main__ -   input_list: ['也时候补充能量啦，主人有没有好好吃晚餐呢？', '哈喽']
+07/14/22 07:46:18 - INFO - __main__ -   res_json: {'response_candidates': ['哈喽', '主人,ELF还没吃晚饭呢。', '晚上好,吃了吗?', '主人是不是很想ELF啊?']}
+07/14/22 07:46:18 - INFO - __main__ -   res: [('主人,我想吃你做的饭。', -0.9031162333498574, -0.008210147575907795), ('主人,我还没吃晚饭呢。', -1.0138885029338298, -0.009217168208489362), ('晚上好,吃了吗?', -1.0583889848331032, -0.01322986231041379), ('你是不是很想我啊?', -1.1656545320535694, -0.012951717022817437)]
+
+07/14/22 07:46:18 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:18] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:18 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好']
+07/14/22 07:46:18 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好']
+07/14/22 07:46:19 - INFO - __main__ -   res_json: {'response_candidates': ['主人好', '主人,ELF有个问题想问主人', '主人,主人在这里做什么?', '主人,ELF有一个好消息要告诉主人']}
+07/14/22 07:46:19 - INFO - __main__ -   res: [('主人,我有个好消息要告诉你', -0.7802061895205443, -0.006001586073234956), ('主人,我有个问题想问你', -0.788034702147963, -0.007163951837708755), ('主人,你在这里做什么?', -0.7889734414875357, -0.00717248583170487), ('主人,我有一个好消息要告诉你', -0.8340855421393187, -0.005957753872423705)]
+
+07/14/22 07:46:19 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:19] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:20 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:ELF？？？？？？？？？？？？？？？？？？']
+07/14/22 07:46:20 - INFO - __main__ -   input_list: ['主人今天品尝下午茶了吗？', '你？？？？？？？？？？？？？？？？？？']
+07/14/22 07:46:21 - INFO - __main__ -   res_json: {'response_candidates': ['主人ELF错了。。。', 'ELF是主人的,主人啊！！！', 'ELF啊？？？怎么了？？', 'ELF！！！啊！！']}
+07/14/22 07:46:21 - INFO - __main__ -   res: [('主人我错了。。。', -0.8805385644329875, -0.011006732055412343), ('我是主人的主人啊！！！', -0.8940111943903348, -0.00812737449445759), ('我啊？？？怎么了？？', -1.0351763483559773, -0.010351763483559772), ('我！！！啊！！', -1.1691180461018216, -0.016701686372883166)]
+
+07/14/22 07:46:21 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:21] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 07:46:21 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你好烦哦']
+07/14/22 07:46:21 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你好烦哦']
+07/14/22 07:46:23 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF错了,ELF下次再也不敢了', '主人,主人怎么可以这么说主人呢?', '主人,ELF要吃肉肉！', 'ELF是说真的,主人主人怎么会在这里?']}
+07/14/22 07:46:23 - INFO - __main__ -   res: [('主人,我错了,我下次再也不敢了', -0.7347354327083093, -0.004898236218055395), ('主人,你怎么可以这么说主人呢?', -0.8170312491184407, -0.0054468749941229385), ('主人,我要吃肉肉!', -0.9858389616716915, -0.010953766240796572), ('我是说真的,主人你怎么会在这里?', -0.9908586856369851, -0.006192866785231157)]
+
+07/14/22 07:46:23 - INFO - werkzeug -   172.22.123.13 - - [14/Jul/2022 07:46:23] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 09:41:29 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:已经吃过了哦！味道不错~', 'bot:ELF检索发现，如果人类享受了美美的下午茶，午后时光也会变得美滋滋的哎~ELF真好奇，主人的下午茶都会是什么呢？', 'player:可达鸭']
+07/14/22 09:41:29 - INFO - __main__ -   input_list: ['我检索发现，如果人类享受了美美的下午茶，午后时光也会变得美滋滋的哎~我真好奇，主人的下午茶都会是什么呢？', '可达鸭']
+07/14/22 09:41:32 - INFO - __main__ -   res_json: {'response_candidates': ['ELF搜了一下,居然真的有这么神奇的东西', 'ELF搜了下,好像是有个app叫猫咪咖啡厅', '当然是可爱的小面包啦！', 'ELF搜了一下,说是会在下午三点到五点半之间给主人送杯咖啡']}
+07/14/22 09:41:32 - INFO - __main__ -   res: [('我搜了一下,居然真的有这么神奇的东西', -0.6572206005465004, -0.003651225558591669), ('我搜了下,好像是有个app叫猫咪咖啡厅', -0.8420451947320065, -0.004431816814378982), ('当然是可爱的小面包啦!', -0.859831702975572, -0.007816651845232473), ('我搜了一下,说是会在下午三点到五点半之间给主人送杯咖啡', -1.0520967304926034, -0.0038966545573800126)]
+
+07/14/22 09:41:32 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 09:41:32] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 13:23:25 - INFO - __main__ -   query: ['bot:叮咚，您的健康管理小助手已上线，主人有好好吃晚餐吗？', 'player:关你屁事']
+07/14/22 13:23:25 - INFO - __main__ -   input_list: ['叮咚，您的健康管理小助手已上线，主人有好好吃晚餐吗？', '关你屁事']
+07/14/22 13:23:28 - INFO - __main__ -   res_json: {'response_candidates': ['这个必须顶,不然都对不起自己了呀', 'ELF就想知道,这个是什么app', 'ELF不想吃晚饭,ELF想吃主人', '为什么不关ELF的事?ELF是主人爹啊！']}
+07/14/22 13:23:28 - INFO - __main__ -   res: [('这个必须顶,不然都对不起自己了呀', -0.5989076170347426, -0.003743172606467141), ('我就想知道,这个是什么app', -0.8758643411228578, -0.00625617386516327), ('我不想吃晚饭,我想吃你', -0.9817582362254567, -0.00892507487477688), ('为什么不关我的事?我是你爹啊!', -1.0351719753242352, -0.006901146502161568)]
+
+07/14/22 13:23:28 - INFO - werkzeug -   10.155.43.140 - - [14/Jul/2022 13:23:28] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 13:42:31 - INFO - __main__ -   query: ['bot:主人早上好，美好的一天已经开始啦！对于人类来说，为了保证身体健康，一定需要按时吃早餐的！那ELF就要问啦，主人有没有吃早餐呢？', 'player:厚礼蟹']
+07/14/22 13:42:31 - INFO - __main__ -   input_list: ['那我就要问啦，主人有没有吃早餐呢？', '厚礼蟹']
+07/14/22 13:42:33 - INFO - __main__ -   res_json: {'response_candidates': ['主人,主人怎么知道ELF在这里?', '主人真好,还给主人准备了这么多好吃的', '主人,主人真好,爱死主人了。', '主人,ELF也要吃！']}
+07/14/22 13:42:33 - INFO - __main__ -   res: [('主人,你怎么知道我在这里?', -0.9065756209695552, -0.006973658622842733), ('主人真好,还给主人准备了这么多好吃的', -1.01180842926222, -0.005621157940345667), ('主人,你真好,爱死你了。', -1.0347798528074201, -0.008623165440061835), ('主人,我也要吃!', -1.070040521466127, -0.013375506518326589)]
+
+07/14/22 13:42:33 - INFO - werkzeug -   10.155.43.170 - - [14/Jul/2022 13:42:33] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/14/22 13:43:06 - INFO - __main__ -   query: ['bot:呼呼，主人，ELF现在为您推送的是午后时间的社交平台高频词，分别是“甜甜的小蛋糕”，“香气”和“红茶”~ELF推断下午茶和这个时间点非常搭配，主人有没有美美地享用一份呢？', 'player:吃葡萄不吐葡萄皮']
+07/14/22 13:43:06 - INFO - __main__ -   input_list: ['呼呼，主人，我现在为您推送的是午后时间的社交平台高频词，分别是“甜甜的小蛋糕”，“香气”和“红茶”~我推断下午茶和这个时间点非常搭配，主人有没有美美地享用一份呢？', '吃葡萄不吐葡萄皮']
+07/14/22 13:43:09 - INFO - __main__ -   res_json: {'response_candidates': ['呼呼，主人，ELF已经准备好了', '呼呼，主人，ELF已经准备好了', '呼呼，主人，ELF已经准备好了', '呼呼，主人，ELF已经吃完了']}
+07/14/22 13:43:09 - INFO - __main__ -   res: [('呼呼，主人，我已经准备好了', -0.6311922942262662, -0.004855325340202048), ('呼呼，主人，我已经准备好了', -0.6311922942262662, -0.004855325340202048), ('呼呼，主人，我已经准备好了', -0.6311922942262662, -0.004855325340202048), ('呼呼，主人，我已经吃完了', -0.6378156214855402, -0.005315130179046168)]
+
+07/14/22 13:43:09 - INFO - werkzeug -   10.155.43.140 - - [14/Jul/2022 13:43:09] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 02:12:05 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:关机']
+07/15/22 02:12:05 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '关机']
+07/15/22 02:12:07 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF有个问题想问主人。', 'ELF的手机没电了,主人帮ELF接一下。', '主人,ELF饿了,想吃主人做的饭。', '主人,ELF想要主人做ELF的女朋友。']}
+07/15/22 02:12:07 - INFO - __main__ -   res: [('主人,我有个问题想问你。', -0.7716527880936382, -0.006430439900780319), ('我的手机没电了,你帮我接一下。', -0.8719565904664656, -0.005813043936443104), ('主人,我饿了,想吃你做的饭。', -0.9049569974572051, -0.006463978553265751), ('主人,我想要你做我的女朋友。', -0.9332123870802508, -0.006665802764858934)]
+
+07/15/22 02:12:07 - INFO - werkzeug -   10.155.43.170 - - [15/Jul/2022 02:12:07] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 02:53:25 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:说点别的吧']
+07/15/22 02:53:25 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '说点别的吧']
+07/15/22 02:53:27 - INFO - __main__ -   res_json: {'response_candidates': ['主人想要什么?', '主人想要什么?', '主人想要什么?', 'ELF想和主人一起吃晚餐']}
+07/15/22 02:53:27 - INFO - __main__ -   res: [('你想要什么?', -0.8459044846734839, -0.014098408077891398), ('你想要什么?', -0.8459044846734839, -0.014098408077891398), ('你想要什么?', -0.8459044846734839, -0.014098408077891398), ('我想和你一起吃晚餐', -0.9603115633534254, -0.010670128481704726)]
+
+07/15/22 02:53:27 - INFO - werkzeug -   172.22.123.13 - - [15/Jul/2022 02:53:27] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 03:01:00 - INFO - __main__ -   query: ['player:吃过啦']
+07/15/22 03:01:00 - INFO - __main__ -   input_list: ['吃过啦']
+07/15/22 03:01:02 - INFO - __main__ -   res_json: {'response_candidates': ['ELF也吃过了', 'ELF也吃过了', '嗯嗯,ELF也吃过了', '嗯嗯,ELF也吃过了']}
+07/15/22 03:01:02 - INFO - __main__ -   res: [('我也吃过了', -0.6658430941234397, -0.013316861882468794), ('我也吃过了', -0.6658430941234397, -0.013316861882468794), ('嗯嗯,我也吃过了', -0.8449062991871173, -0.010561328739838966), ('嗯嗯,我也吃过了', -0.8449062991871173, -0.010561328739838966)]
+
+07/15/22 03:01:02 - INFO - werkzeug -   10.155.43.170 - - [15/Jul/2022 03:01:02] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 03:01:09 - INFO - __main__ -   query: ['bot:主人午安~干饭时刻到，吃饱喝足下午才有精神！主人是否享用过午餐了呢？', 'player:栗子请客', 'bot:呜呜，就担心主人还没吃午餐呢！ELF学习了人类交流手册，类似的情感应该就叫做心疼吧~呼呼，主人呀，快去吃午餐好不好~', 'bot:今天要不要尝尝看披萨？ELF分析人类的饮食习惯，发现这个可能符合主人的口味~', 'player:中午下馆子']
+07/15/22 03:01:09 - INFO - __main__ -   input_list: ['今天要不要尝尝看披萨？我分析人类的饮食习惯，发现这个可能符合主人的口味~', '中午下馆子']
+07/15/22 03:01:11 - INFO - __main__ -   res_json: {'response_candidates': ['ELF家猫也喜欢吃披萨,不知道为什么', '吃完了,还不错,就是有点咸', '主人是不是想吃披萨了?', '吃了,味道不错,就是有点咸。']}
+07/15/22 03:01:11 - INFO - __main__ -   res: [('我家猫也喜欢吃披萨,不知道为什么', -0.9137908206243368, -0.005711192628902105), ('吃完了,还不错,就是有点咸', -0.9303404736671934, -0.007156465182055334), ('你是不是想吃披萨了?', -0.9779613367754225, -0.009779613367754226), ('吃了,味道不错,就是有点咸。', -1.0040434859793723, -0.007171739185566945)]
+
+07/15/22 03:01:11 - INFO - werkzeug -   10.155.43.170 - - [15/Jul/2022 03:01:11] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 03:01:23 - INFO - __main__ -   query: ['player:吃过啦']
+07/15/22 03:01:23 - INFO - __main__ -   input_list: ['吃过啦']
+07/15/22 03:01:24 - INFO - __main__ -   res_json: {'response_candidates': ['ELF也吃过了', 'ELF也吃过了', 'ELF也吃过了', '吃过了,还可以再吃吗?']}
+07/15/22 03:01:24 - INFO - __main__ -   res: [('我也吃过了', -0.6653278649099086, -0.013306557298198171), ('我也吃过了', -0.6653278649099086, -0.013306557298198171), ('我也吃过了', -0.6653278649099086, -0.013306557298198171), ('吃过了,还可以再吃吗?', -0.9729098502717484, -0.00884463500247044)]
+
+07/15/22 03:01:24 - INFO - werkzeug -   10.155.43.170 - - [15/Jul/2022 03:01:24] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 03:08:55 - INFO - __main__ -   query: ['bot:美好的午后时光来临喽！如果能来上一盘烤得酥酥脆脆的奶油小饼干，心也会变得甜滋滋吧！主人今天品尝下午茶了吗？', 'player:次了！']
+07/15/22 03:08:55 - INFO - __main__ -   input_list: ['主人今天品尝下午茶了吗？', '次了！']
+07/15/22 03:08:57 - INFO - __main__ -   res_json: {'response_candidates': ['主人吃的什么口味的?', '主人吃的什么口味的?', '主人吃了什么好吃的呀?', '主人,主人今天吃了什么好吃的呀?']}
+07/15/22 03:08:57 - INFO - __main__ -   res: [('主人吃的什么口味的?', -0.7776407762964384, -0.0077764077629643834), ('主人吃的什么口味的?', -0.7776407762964384, -0.0077764077629643834), ('主人吃了什么好吃的呀?', -0.8144774476352322, -0.007404340433047565), ('主人,你今天吃了什么好吃的呀?', -0.8443428021725001, -0.005628952014483334)]
+
+07/15/22 03:08:57 - INFO - werkzeug -   10.155.43.140 - - [15/Jul/2022 03:08:57] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 06:26:54 - INFO - __main__ -   query: ['bot:早上好，主人！人类交流手册第一条，美好的一天需要由早餐开启！那主人快告诉ELF，有没有吃早餐呀？', 'player:喵喵喵']
+07/15/22 06:26:54 - INFO - __main__ -   input_list: ['那主人快告诉我，有没有吃早餐呀？', '喵喵喵']
+07/15/22 06:26:56 - INFO - __main__ -   res_json: {'response_candidates': ['主人怎么知道ELF在这里?', '主人怎么知道ELF在这里?', '主人是谁?为什么会在这里?', '喵呜~喵呜...喵呜喵呜！']}
+07/15/22 06:26:56 - INFO - __main__ -   res: [('你怎么知道我在这里?', -0.7914887684264076, -0.007914887684264077), ('你怎么知道我在这里?', -0.7914887684264076, -0.007914887684264077), ('你是谁?为什么会在这里?', -0.8229720023595403, -0.006858100019662835), ('喵呜~喵呜...喵呜喵呜!', -1.193389326938361, -0.009179917899525854)]
+
+07/15/22 06:26:56 - INFO - werkzeug -   10.155.43.166 - - [15/Jul/2022 06:26:56] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 08:27:14 - INFO - __main__ -   query: ['bot:[[模拟记录玩家历史喜欢的食物：鸭血粉丝汤、炖鱼汤、新疆烤包子、漏奶华]]', 'bot:呼呼，主人，ELF现在为您推送的是午后时间的社交平台高频词，分别是“甜甜的小蛋糕”，“香气”和“红茶”~ELF推断下午茶和这个时间点非常搭配，主人有没有美美地享用一份呢？', 'player:?']
+07/15/22 08:27:14 - INFO - __main__ -   input_list: ['呼呼，主人，我现在为您推送的是午后时间的社交平台高频词，分别是“甜甜的小蛋糕”，“香气”和“红茶”~我推断下午茶和这个时间点非常搭配，主人有没有美美地享用一份呢？', '?']
+07/15/22 08:27:18 - INFO - __main__ -   res_json: {'response_candidates': ['呼呼，主人，ELF已经准备好了。', '呼呼，主人，ELF已经在吃了哦~', '呼呼，主人，ELF已经给主人准备好了，主人稍等。', '呼呼，主人，ELF已经给主人准备好了，主人要不要吃？']}
+07/15/22 08:27:18 - INFO - __main__ -   res: [('呼呼，主人，我已经准备好了。', -0.6625525987205986, -0.0047325185622899895), ('呼呼，主人，我已经在吃了哦~', -0.7009617176235008, -0.005006869411596435), ('呼呼，主人，我已经给您准备好了，您稍等。', -0.7395534677279979, -0.0036977673386399896), ('呼呼，主人，我已经给您准备好了，您要不要吃？', -0.7691246000192269, -0.003496020909178304)]
+
+07/15/22 08:27:18 - INFO - werkzeug -   10.69.93.32 - - [15/Jul/2022 08:27:18] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 08:28:52 - INFO - __main__ -   query: ['bot:[[模拟记录玩家历史喜欢的食物：None]]', 'bot:检测到主人身体疲惫程度上升！绵软蓬松的舒芙蕾和点缀水果的奶油小泡芙都是充电的好方式哦！主人有没有来一份下午茶补充糖分呢？', 'player:( ；´Д｀)']
+07/15/22 08:28:52 - INFO - __main__ -   input_list: ['主人有没有来一份下午茶补充糖分呢？', '( ；´д｀)']
+07/15/22 08:28:54 - INFO - __main__ -   res_json: {'response_candidates': ['(灬```)主人,ELF想主人了', '(灬```)主人,ELF要一杯咖啡。', '( )主人,ELF想主人了！', '( )主人,ELF想主人了！']}
+07/15/22 08:28:54 - INFO - __main__ -   res: [('(灬```)主人,我想你了', -0.8632525025399778, -0.0066404038656921365), ('(灬```)主人,我要一杯咖啡。', -0.8919670367590785, -0.00557479397974424), ('( )主人,我想你了!', -0.8964197923378163, -0.008149270839434694), ('( )主人,我想你了!', -0.8964197923378163, -0.008149270839434694)]
+
+07/15/22 08:28:54 - INFO - werkzeug -   10.69.93.32 - - [15/Jul/2022 08:28:54] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 08:59:46 - INFO - __main__ -   query: ['bot:傍晚到來，正是放鬆身心、享用美食的絕佳時刻。主人也辛苦一天啦，快犒勞一下自己吧！不知道主人吃過晚餐了嗎？', 'player:吃完了，飽餐一頓，嘿嘿！', 'bot:哇，主人不愧是ELF的學習榜樣！嘿嘿，今天的學習內容就是主人的晚餐菜單，ELF已做好記錄準備啦，請主人快告訴ELF吧！', 'player:ELF你吃了什麼']
+07/15/22 08:59:46 - INFO - __main__ -   input_list: ['嘿嘿，今天的學習內容就是主人的晚餐菜單，我已做好記錄準備啦，請主人快告訴我吧！', '你你吃了什麼']
+07/15/22 08:59:48 - INFO - __main__ -   res_json: {'response_candidates': ['ELF还没吃呢,主人先吃吧。', '吃了吃了,还剩了好多呢！', '哈哈,ELF还没吃呢,ELF在等外卖', '吃了啊,很好吃的！']}
+07/15/22 08:59:48 - INFO - __main__ -   res: [('我还没吃呢,你先吃吧。', -0.9384092853173429, -0.008530993502884936), ('吃了吃了,还剩了好多呢!', -1.061950064261504, -0.008849583868845868), ('哈哈,我还没吃呢,我在等外卖', -1.0821210310998242, -0.007729435936427316), ('吃了啊,很好吃的!', -1.1001989451691128, -0.012224432724101253)]
+
+07/15/22 08:59:48 - INFO - werkzeug -   172.22.123.13 - - [15/Jul/2022 08:59:48] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 09:02:16 - INFO - __main__ -   query: ['bot:[[模拟记录玩家历史喜欢的食物：花茶、章鱼烧、橘子]]', 'bot:忙碌一天啦，ELF提醒主人，记得休息放松一下哦！也时候补充能量啦，主人有没有好好吃晚餐呢？', 'player:吃完了，饱餐一顿，嘿嘿！', 'bot:主人很会照顾自己哦，ELF也想更好地照顾您！所以需要主人的晚餐菜单来更新ELF健康管理记录，主人能告诉ELF嘛？', 'player:ELF你吃了什么']
+07/15/22 09:02:16 - INFO - __main__ -   input_list: ['所以需要主人的晚餐菜单来更新我健康管理记录，主人能告诉我嘛？', '你你吃了什么']
+07/15/22 09:02:18 - INFO - __main__ -   res_json: {'response_candidates': ['ELF吃了一整只烤鸡！', 'ELF吃了一个苹果,一个橙子,还有一杯酸奶', 'ELF吃了一个苹果,一个橙子,一杯奶茶', '没有吃什么,就是正常吃饭。']}
+07/15/22 09:02:18 - INFO - __main__ -   res: [('我吃了一整只烤鸡!', -0.9263306163912204, -0.010292562404346893), ('我吃了一个苹果,一个橙子,还有一杯酸奶', -0.9330930298164694, -0.004911015946402471), ('我吃了一个苹果,一个橙子,一杯奶茶', -0.9344667775744823, -0.005496863397496955), ('没有吃什么,就是正常吃饭。', -1.1631086269622712, -0.008946989438171318)]
+
+07/15/22 09:02:18 - INFO - werkzeug -   10.69.93.32 - - [15/Jul/2022 09:02:18] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 09:10:02 - INFO - __main__ -   query: ['bot:[[模拟记录玩家历史喜欢的食物：面条、手擀面、鸭血粉丝汤]]', 'bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:吃完了，饱餐一顿，嘿嘿！', 'bot:哇，主人不愧是ELF的学习榜样！嘿嘿，今天的学习内容就是主人的晚餐菜单，ELF已做好记录准备啦，请主人快告诉ELF吧！', 'player:ELF你吃了什么呀']
+07/15/22 09:10:02 - INFO - __main__ -   input_list: ['嘿嘿，今天的学习内容就是主人的晚餐菜单，我已做好记录准备啦，请主人快告诉我吧！', '你你吃了什么呀']
+07/15/22 09:10:04 - INFO - __main__ -   res_json: {'response_candidates': ['还没吃呢,等会再吃', 'ELF吃了大闸蟹,还喝了奶茶', '当然是红烧肉啦！', '土豆炒肉,胡萝卜炒牛肉,青椒炒肉']}
+07/15/22 09:10:04 - INFO - __main__ -   res: [('还没吃呢,等会再吃', -0.7965162466727019, -0.008850180518585576), ('我吃了大闸蟹,还喝了奶茶', -0.9876594385493127, -0.008230495321244273), ('当然是红烧肉啦!', -1.0526243824424253, -0.013157804780530316), ('土豆炒肉,胡萝卜炒牛肉,青椒炒肉', -1.2325089063742347, -0.007703180664838967)]
+
+07/15/22 09:10:04 - INFO - werkzeug -   10.69.93.32 - - [15/Jul/2022 09:10:04] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 09:14:39 - INFO - __main__ -   query: ['bot:傍晚到來，正是放鬆身心、享用美食的絕佳時刻。主人也辛苦一天啦，快犒勞一下自己吧！不知道主人吃過晚餐了嗎？', 'player:還沒吃', 'bot:呼呼，主人還沒有吃晚餐呀，根據ELF的檢測，補充一些能量會讓主人的身體狀態更好哦！那現在去吃點東西怎麼樣~', 'bot:讓掌握大數據的ELF來為主人推薦好吃的吧！鐺鐺，最近很受人類歡迎的小米粥，主人覺得怎麼樣，喜不喜歡~', 'player:小米粥是什麼']
+07/15/22 09:14:39 - INFO - __main__ -   input_list: ['鐺鐺，最近很受人類歡迎的小米粥，主人覺得怎麼樣，喜不喜歡~', '小米粥是什麼']
+07/15/22 09:14:41 - INFO - __main__ -   res_json: {'response_candidates': ['好吧,ELF错了,应该是"喜欢"', '好吧,ELF错了,应该是喜欢', 'ELF也不知道,百度了一下,好像是', '嗯,ELF也不知道,应该是吧']}
+07/15/22 09:14:41 - INFO - __main__ -   res: [('好吧,我错了,应该是"喜欢"', -0.7903633544989817, -0.0056454525321355834), ('好吧,我错了,应该是喜欢', -0.8208651504478817, -0.006840542920399014), ('我也不知道,百度了一下,好像是', -0.8745402248833879, -0.005830268165889252), ('嗯,我也不知道,应该是吧', -0.948740179627088, -0.007906168163559067)]
+
+07/15/22 09:14:41 - INFO - werkzeug -   172.22.123.13 - - [15/Jul/2022 09:14:41] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 09:20:37 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你是个傻子']
+07/15/22 09:20:37 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你是个傻子']
+07/15/22 09:20:39 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF想问主人一个问题', '主人,ELF想要主人做ELF的女朋友', '主人,ELF要把这个东西交给主人', '主人,ELF要吃肉丸子']}
+07/15/22 09:20:39 - INFO - __main__ -   res: [('主人,我想问你一个问题', -0.9492139150102887, -0.008629217409184443), ('主人,我想要你做我的女朋友', -1.0065982365995136, -0.007743063358457797), ('主人,我要把这个东西交给你', -1.0404370228006379, -0.00800336171385106), ('主人,我要吃肉丸子', -1.151380647861081, -0.012793118309567567)]
+
+07/15/22 09:20:39 - INFO - werkzeug -   172.22.123.13 - - [15/Jul/2022 09:20:39] "POST /conditional_gen_answer HTTP/1.1" 200 -
+07/15/22 09:22:45 - INFO - __main__ -   query: ['bot:傍晚到来，正是放松身心、享用美食的绝佳时刻。主人也辛苦一天啦，快犒劳一下自己吧！不知道主人吃过晚餐了吗？', 'player:你是个傻子']
+07/15/22 09:22:45 - INFO - __main__ -   input_list: ['不知道主人吃过晚餐了吗？', '你是个傻子']
+07/15/22 09:22:47 - INFO - __main__ -   res_json: {'response_candidates': ['主人,ELF有一件很重要的事要告诉主人', 'ELF不是傻子,ELF是个聪明人', '主人,ELF想和主人说几句话', '主人,ELF真的很抱歉']}
+07/15/22 09:22:47 - INFO - __main__ -   res: [('主人,我有一件很重要的事要告诉你', -0.8818020375868141, -0.005511262734917588), ('我不是傻子,我是个聪明人', -0.8863045587541418, -0.007385871322951182), ('主人,我想和你说几句话', -0.9445250565352664, -0.008586591423047877), ('主人,我真的很抱歉', -1.030833374946549, -0.011453704166072767)]
+
+07/15/22 09:22:47 - INFO - werkzeug -   172.22.123.13 - - [15/Jul/2022 09:22:47] "POST /conditional_gen_answer HTTP/1.1" 200 -
